@@ -24,6 +24,7 @@
 <script>
     function onFocus(){ console.log('browser window activated'); }
 function onBlur(){ 
+  
   window.location = '{{route('cit')}}'
 }
 
@@ -48,6 +49,7 @@ if(document.hasFocus()){
     iframeFocused = true;
     inter = setInterval(()=>{
         if(!document.hasFocus()){
+          
           window.location = '{{route('cit')}}';
             iframeFocused = false;
             onBlur();
@@ -93,7 +95,13 @@ var x = setInterval(function() {
   }
 }, 1000);
 
-
+</script>
+<script>
+  var timeout;
+document.onmousemove = function(){
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){alert("Kamu ga aktif selama 6 detik (dianggap kecurangan)");}, 6000);
+}
 </script>
 
 @endsection
