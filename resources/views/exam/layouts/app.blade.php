@@ -16,7 +16,7 @@
         height:calc(100vh - 4px);
         width:calc(100vw - 4px);
         box-sizing: border-box;
-        pointer-events: none;
+        /* pointer-events: none; */
       }
     </style>
     <title>siTepat - Aplikasi Test Paling Tepat dan Akurat</title>

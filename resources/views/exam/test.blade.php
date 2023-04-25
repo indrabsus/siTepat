@@ -21,6 +21,9 @@
 
 <iframe src="{{$test->link}}" frameborder="0" target="_self"></iframe>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function onFocus(){ console.log('browser window activated'); }
 function onBlur(){ 
@@ -96,12 +99,17 @@ var x = setInterval(function() {
 }, 1000);
 
 </script>
-<script>
+<!-- <script>
   var timeout;
 document.onmousemove = function(){
   clearTimeout(timeout);
   timeout = setTimeout(function(){alert("Kamu ga aktif selama 6 detik (dianggap kecurangan)");}, 6000);
 }
+</script> -->
+<script>
+  $('iframe').contents().mousemove( function(e) {
+    console.log( e.clientX, e.clientY );
+});
 </script>
 
 @endsection
