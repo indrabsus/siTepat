@@ -110,6 +110,14 @@
           </p>
         </a>
       </li>
+    <li class="nav-item">
+        <a href="{{route('graduationmgmt')}}" class="nav-link {{ Route::currentRouteName() == 'graduationmgmt' ? 'active':''}}">
+          <i class="nav-icon fa fa-anchor"></i>
+          <p>
+            Kelulusan
+          </p>
+        </a>
+      </li>
      
       @endif
 

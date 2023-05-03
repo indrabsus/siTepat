@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('petugas/logujian', LogUjian::class)->name('logujianpetugas');
         Route::get('petugas/logcurang', LogCurang::class)->name('logcurangpetugas');
         Route::get('petugas/graduationmgmt', GraduationMgmt::class)->name('graduationmgmt');
+
+        Route::get('petugas/generate',[OtherController::class,'generate'])->name('generate');
     });
     Route::group(['middleware' => ['cekrole:siswa']], function(){
         Route::get('siswa', [ExamController::class,'listTest'])->name('indexsiswa');

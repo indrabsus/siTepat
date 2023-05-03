@@ -28,5 +28,11 @@ class OtherController extends Controller
         }
         
     }
+    public function generate(){
+        Graduation::where('id_kelulusan','>',0)->update([
+            'password' => rand(10000,99999)
+        ]);
+        return redirect()->route('graduationmgmt')->with('berhasil', 'Berhasil Acak Password');
+    }
     
 }

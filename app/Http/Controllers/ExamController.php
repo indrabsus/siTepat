@@ -137,4 +137,5 @@ class ExamController extends Controller
         $pdf = Pdf::loadView('pdf.logc', compact('data','kelas'));
         return $pdf->stream('log-kecurangan.pdf');
     }
+    
 }

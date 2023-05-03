@@ -74,4 +74,5 @@ class GraduationMgmt extends Component
         session()->flash('sukses', 'Data berhasil dihapus!');
         $this->dispatchBrowserEvent('closeModal');
     }
+    
 }
