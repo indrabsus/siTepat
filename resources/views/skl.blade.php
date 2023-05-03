@@ -1,10 +1,3 @@
-@if (Auth::check())
-    @if (Auth::user()->level == 'admin')
-    <script>window.location = "{{ route('indexadmin') }}";</script>
-    @elseif (Auth::user()->level == 'karyawan')
-    <script>window.location = "{{ route('indexkaryawan') }}";</script>
-    @endif
-@endif
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +20,7 @@
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="{{ url('/') }}" class="h1"><b>si</b>Tepat</a>
-      <div><i>by Indra Batara, S.Pd</i></div>
+      
     </div>
     <div class="card-body">
         @if (session('status'))
@@ -45,34 +38,19 @@
           </div>
     @endif
 
-      <form action="{{ route('login') }}" method="post">
-        @csrf
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukan Username" name="username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Masukan Password" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-
-          <!-- /.col -->
-          <div class="col-6">
-            <a href="{{route('register')}}" class="btn btn-danger btn-block">Register</a>
-          </div>
-          <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          </form>
+      <table class="table table-bordered">
+        <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td>{{$data->nama}}</td>
+        </tr>
+        <tr>
+            <td>Link</td>
+            <td>:</td>
+            <td><a href="{{$data->link}}" target="_blank">Download Surat Kelulusan {{$data->nama}}</a></td>
+        </tr>
+      </table>
+      <div class="mt-3"><a href="{{route('cekSkl')}}">Kembali</a></div>
         
           <!-- /.col -->
         </div>

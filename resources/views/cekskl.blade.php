@@ -1,10 +1,3 @@
-@if (Auth::check())
-    @if (Auth::user()->level == 'admin')
-    <script>window.location = "{{ route('indexadmin') }}";</script>
-    @elseif (Auth::user()->level == 'karyawan')
-    <script>window.location = "{{ route('indexkaryawan') }}";</script>
-    @endif
-@endif
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +19,8 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ url('/') }}" class="h1"><b>si</b>Tepat</a>
+      <img src="https://www.smksangkuriang1cimahi.sch.id/storage/app/public/imgweb/logo.png" width="100px">
+      <div>Aplikasi Surat Kelulusan</div>
       <div><i>by Indra Batara, S.Pd</i></div>
     </div>
     <div class="card-body">
@@ -45,10 +39,10 @@
           </div>
     @endif
 
-      <form action="{{ route('login') }}" method="post">
+      <form action="{{ route('sklproses') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukan Username" name="username">
+          <input type="text" class="form-control" placeholder="Masukan NIS" name="nis">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -66,11 +60,9 @@
         <div class="row justify-content-center">
 
           <!-- /.col -->
-          <div class="col-6">
-            <a href="{{route('register')}}" class="btn btn-danger btn-block">Register</a>
-          </div>
-          <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Cek Kelulusan</button>
           </div>
           </form>
         

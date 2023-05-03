@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\OtherController;
 use App\Http\Livewire\Admin\IndexAdmin;
 use App\Http\Livewire\Admin\UserMgmt;
 use App\Http\Livewire\Petugas\ExamMgmt;
+use App\Http\Livewire\Petugas\GraduationMgmt;
 use App\Http\Livewire\Petugas\GroupMgmt;
 use App\Http\Livewire\Petugas\LogCurang;
 use App\Http\Livewire\Petugas\LogUjian;
@@ -30,6 +32,9 @@ Route::get('logout',[AuthController::class,'logout'])->name('logout');
 Route::get('done',[ExamController::class,'done'])->name('done');
 Route::get('cit',[ExamController::class,'logc'])->name('cit');
 Route::get('pdf/logc/{id}',[ExamController::class,'printLogc'])->name('printLogc');
+Route::get('kelulusan',[OtherController::class,'cekSkl'])->name('cekSkl');
+Route::any('sklproses',[OtherController::class,'sklproses'])->name('sklproses');
+Route::get('skl',[OtherController::class,'skl'])->name('skl');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['cekrole:admin']], function(){
@@ -48,6 +53,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('petugas/exammgmt', ExamMgmt::class)->name('exammgmtpetugas');
         Route::get('petugas/logujian', LogUjian::class)->name('logujianpetugas');
         Route::get('petugas/logcurang', LogCurang::class)->name('logcurangpetugas');
+        Route::get('petugas/graduationmgmt', GraduationMgmt::class)->name('graduationmgmt');
     });
     Route::group(['middleware' => ['cekrole:siswa']], function(){
         Route::get('siswa', [ExamController::class,'listTest'])->name('indexsiswa');

@@ -99,4 +99,9 @@ class ExamMgmt extends Component
         session()->flash('sukses', 'Data berhasil dihapus!');
         $this->dispatchBrowserEvent('closeModal');
     }
+    public function hapusSemua(){
+        Exam::where('id_ujian','>',0)->delete();
+        session()->flash('sukses', 'Semua Ujian Terhapus Semua');
+        $this->dispatchBrowserEvent('closeModal');
+    }
 }

@@ -18,6 +18,11 @@
             <a class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> Tambah</i></a>
         </div>
         <div class="row justify-content-end">
+        @if (Auth::user()->level == 'admin')
+        <div class="col-lg-3">
+          <a class="btn btn-danger btn-sm mb-3" data-toggle="modal" data-target="#hs"><i class="fa fa-times"> Hapus Semua</i></a>
+      </div>
+        @endif
             <div class="col-lg-3 mb-1">
                 <select wire:model='result' class="form-control">
                     <option value="10">10</option>
@@ -262,6 +267,30 @@
       </div>
       <!-- /.modal -->
 
+      <div class="modal fade" id="hs" wire:ignore.self>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Hapus Semua</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin menghapus semua Ujian yang ada?
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" wire:click="hapusSemua()">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
 
       
 
@@ -280,6 +309,9 @@
         })
         window.addEventListener('closeModal', event => {
             $('#req').modal('hide');
+        })
+        window.addEventListener('closeModal', event => {
+            $('#hs').modal('hide');
         })
       </script>
 

@@ -112,5 +112,13 @@ class StudentMgmt extends Component
         $this->clearForm();
         $this->dispatchBrowserEvent('closeModal');
     }
+    public function accAll(){
+        User::where('id','>',0)->update([
+            'acc' => 'y'
+        ]);
+        session()->flash('sukses', 'User semua sudah di Acc');
+        $this->clearForm();
+        $this->dispatchBrowserEvent('closeModal');
+    }
     
 }
