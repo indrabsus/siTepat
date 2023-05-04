@@ -10,6 +10,9 @@ class OtherController extends Controller
     public function cekSkl(){
         return view('cekskl');
     }
+    public function cekSkl2(){
+        return view('cekskl2');
+    }
 
     public function sklproses(Request $request){
         $request->validate([
@@ -28,6 +31,7 @@ class OtherController extends Controller
         }
         
     }
+    
     public function generate(){
         Graduation::where('id_kelulusan','>',0)->update([
             'password' => rand(10000,99999)

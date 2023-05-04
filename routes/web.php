@@ -33,6 +33,7 @@ Route::get('done',[ExamController::class,'done'])->name('done');
 Route::get('cit',[ExamController::class,'logc'])->name('cit');
 Route::get('pdf/logc/{id}',[ExamController::class,'printLogc'])->name('printLogc');
 Route::get('kelulusan',[OtherController::class,'cekSkl'])->name('cekSkl');
+Route::get('akululus',[OtherController::class,'cekSkl2'])->name('akululus');
 Route::any('sklproses',[OtherController::class,'sklproses'])->name('sklproses');
 Route::get('skl',[OtherController::class,'skl'])->name('skl');
 
