@@ -42,7 +42,7 @@
       <form action="{{ route('sklproses') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukan NIS" name="nis">
+          <input type="text" class="form-control" placeholder="Masukan NIS" name="nis" disabled>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
