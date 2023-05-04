@@ -21,7 +21,9 @@
     <div class="card-header text-center">
       <img src="https://www.smksangkuriang1cimahi.sch.id/storage/app/public/imgweb/logo.png" width="100px">
       <div>Aplikasi Surat Kelulusan</div>
-      <div><i>by Indra Batara, S.Pd</i></div>
+      <div class="mb-2"><i>by Indra Batara, S.Pd</i></div>
+      
+      <div id="timer"></div>
     </div>
     <div class="card-body">
         @if (session('status'))
@@ -42,7 +44,7 @@
       <form action="{{ route('sklproses') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukan NIS" name="nis" disabled>
+          <input type="text" class="form-control" placeholder="Masukan NIS" name="nis" {{strtotime(now()) <= strtotime('2023-05-05 08:00:00') ? 'disabled' : '' }}>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -84,9 +86,32 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('adminv') }}/dist/js/adminlte.min.js"></script>
 <script>
-   $("#reset").click(function(){
-  $('input').val('')
-});
+    // Mengatur waktu akhir countdown (dalam detik)
+    var examStartTime = new Date("{{ strtotime('2023-05-05 08:00:00') }}" * 1000);
+    var countDownDate = new Date(examStartTime.getTime());
+
+// Memperbarui hitungan mundur setiap 1 detik
+var x = setInterval(function() {
+
+  // Mendapatkan waktu saat ini
+  var now = new Date().getTime()
+  // Menghitung selisih waktu antara waktu akhir dan waktu saat ini
+  var distance = countDownDate - now;
+  // Menghitung waktu dalam format menit dan detik
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Menampilkan waktu dalam elemen HTML yang ditentukan
+  document.getElementById("timer").innerHTML = "<h1>"+hours + ":" + minutes + ":" + seconds+"</h1>";
+    
+  // Jika waktu hitung mundur berakhir, tampilkan pesan
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "Jika NIS belum bisa di isi silakan reload";
+  }
+}, 1000);
+
 </script>
 </body>
 </html>
