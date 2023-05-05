@@ -39,7 +39,7 @@
           </div>
     @endif
 
-      <form action="{{ route('sklproses') }}" method="post">
+      <form action="{{ route('sklproses2') }}" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Masukan NIS" name="nis">

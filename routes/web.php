@@ -35,6 +35,7 @@ Route::get('pdf/logc/{id}',[ExamController::class,'printLogc'])->name('printLogc
 Route::get('kelulusan',[OtherController::class,'cekSkl'])->name('cekSkl');
 Route::get('akululus',[OtherController::class,'cekSkl2'])->name('akululus');
 Route::any('sklproses',[OtherController::class,'sklproses'])->name('sklproses');
+Route::any('sklproses2',[OtherController::class,'sklproses2'])->name('sklproses2');
 Route::get('skl',[OtherController::class,'skl'])->name('skl');
 
 Route::group(['middleware' => ['auth']], function(){

@@ -31,6 +31,23 @@ class OtherController extends Controller
         }
         
     }
+    public function sklproses2(Request $request){
+        $request->validate([
+            'nis' => 'required',
+            'password' => 'required'
+        ]);
+        $data = Graduation::where('nis', 'like','%'.$request->nis.'%')->first();
+        if($data != null){
+            if($request->password == $data->password){
+                return view('skl', compact('data'));
+            } else {
+                return redirect()->route('cekSkl2')->with('gagal', 'Data tidak ditemukan');
+            }
+        } else {
+            return redirect()->route('cekSkl2')->with('gagal', 'Data tidak ditemukan');
+        }
+        
+    }
     
     public function generate(){
         Graduation::where('id_kelulusan','>',0)->update([
