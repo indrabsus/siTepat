@@ -89,11 +89,11 @@ var x = setInterval(function() {
     clearInterval(x);
     document.getElementById("timer").innerHTML = "Waktu telah habis!";
 
-    $.get( '{{route('done')}}', function() {
-  console.log('soal beres')
-  });
+  //   $.get( '{{route('done')}}', function() {
+  // console.log('soal beres')
+  // });
   
-  location.reload();
+  // location.reload();
 
   }
 }, 1000);

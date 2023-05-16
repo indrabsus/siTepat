@@ -122,7 +122,7 @@ class ExamController extends Controller
             $text = $nama." dari kelas ".$kelas." dalam ujian ".$ujian;
             Http::get('https://api.telegram.org/bot'.$tokenTelegram.'/sendMessage?chat_id='.$grupId.'&text='.$text." terdeteksi melakukan kecurangan.");
         }
-        return redirect()->route('index')->with('gagal', 'Terdeteksi kecurangan');
+        return redirect()->route('test');
     }
     public function printLogC($id){
         $data = DB::table('log_cheats')

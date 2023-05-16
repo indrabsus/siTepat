@@ -18,10 +18,17 @@
             <a class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> Tambah</i></a>
         </div>
         <div class="row justify-content-end">
-        <div class="col-lg-3">
-            <a class="btn btn-success btn-sm mb-3" data-toggle="modal" data-target="#acc"><i class="fa fa-check"> Acc Semua</i></a>
+        <div class="col-lg-6">
+            <a class="btn btn-danger btn-sm mb-3" data-toggle="modal" data-target="#notacc"><i class="fa fa-times">disallow</i></a>
         </div>
-            <div class="col-lg-3 mb-1">
+        <div class="col-lg-6">
+            <a class="btn btn-success btn-sm mb-3" data-toggle="modal" data-target="#acc"><i class="fa fa-check">allow</i></a>
+        </div>
+            
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-3 mb-1">
                 <select wire:model='result' class="form-control">
                     <option value="10">10</option>
                     <option value="20">20</option>
@@ -29,7 +36,7 @@
                     <option value="100">100</option>
                 </select>
             </div>
-            <div class="col-lg-6 mb-1">
+            <div class="col-lg-3 mb-1">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari Nama" wire:model="cari">
                     <div class="input-group-append">
@@ -37,7 +44,14 @@
                     </div>
                   </div>
             </div>
-        </div>
+            <div class="col-lg-3 mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari Kelas" wire:model="carikelas">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+                  </div>
+            </div>
     </div>
     <table class="table table-striped">
         <tr>
@@ -304,6 +318,29 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+      <div class="modal fade" id="notacc" wire:ignore.self>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Acc Semua Siswa</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin untuk melanjutkan?
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" wire:click="notAccAll()">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 
 
       
@@ -326,6 +363,9 @@
         })
         window.addEventListener('closeModal', event => {
             $('#acc').modal('hide');
+        })
+        window.addEventListener('closeModal', event => {
+            $('#notacc').modal('hide');
         })
       </script>
 

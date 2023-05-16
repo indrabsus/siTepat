@@ -25,9 +25,11 @@
         </tr>
         <?php $no=1; ?>
         @foreach ($data as $d)
+            <tr>
             <td>{{$no++}}</td>
             <td>{{$d->name}}</td>
             <td>{{$d->nama_ujian}}</td>
+            </tr>
         @endforeach
     </table>
 <!-- Optional JavaScript; choose one of the two! -->

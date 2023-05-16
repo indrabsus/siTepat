@@ -17,6 +17,7 @@ class StudentMgmt extends Component
     public $name, $jenkel, $id_kelas, $no_hp, $nis, $bulan, $id_user, $acc;
     use WithPagination;
     public $cari = '';
+    public $carikelas = '';
     public $result = 10;
     protected $paginationTheme = 'bootstrap';
     public function render()
@@ -25,6 +26,7 @@ class StudentMgmt extends Component
         ->leftJoin('users','users.id','students.id_user')
         ->leftJoin('groups','groups.id_kelas','students.id_kelas')
         ->where('users.name', 'like','%'.$this->cari.'%')
+        ->where('groups.nama_kelas', 'like','%'.$this->carikelas.'%')
         ->orderBy('students.created_at', 'desc')
         ->paginate($this->result);
         $kelas = Group::all();
@@ -50,8 +52,8 @@ class StudentMgmt extends Component
         ]);
         $user = User::create([
             'name' => ucwords($this->name),
-            'username' => strtolower(str_replace(' ','', $this->name)).rand(100,999),
-            'password' => bcrypt('rahasia'),
+            'username' => rand(100,999).strtolower(str_replace(' ','', $this->name)),
+            'password' => bcrypt($this->nis),
             'level' => 'siswa',
             'acc' => $this->acc
         ]);
@@ -117,6 +119,14 @@ class StudentMgmt extends Component
             'acc' => 'y'
         ]);
         session()->flash('sukses', 'User semua sudah di Acc');
+        $this->clearForm();
+        $this->dispatchBrowserEvent('closeModal');
+    }
+    public function notAccAll(){
+        User::where('id','>',0)->update([
+            'acc' => 'n'
+        ]);
+        session()->flash('sukses', 'User semua sudah di tidak di Acc');
         $this->clearForm();
         $this->dispatchBrowserEvent('closeModal');
     }
