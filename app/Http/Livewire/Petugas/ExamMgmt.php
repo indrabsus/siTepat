@@ -104,4 +104,11 @@ class ExamMgmt extends Component
         session()->flash('sukses', 'Semua Ujian Terhapus Semua');
         $this->dispatchBrowserEvent('closeModal');
     }
+    public function disAcc(){
+        Exam::where('id_ujian','>',0)->update([
+            'acc' => 'n'
+        ]);
+        session()->flash('sukses', 'Semua Ujian sudah di Unpublish');
+        $this->dispatchBrowserEvent('closeModal');
+    }
 }

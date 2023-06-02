@@ -17,6 +17,9 @@
         <div class="col-lg-3">
             <a class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> Tambah</i></a>
         </div>
+        <div class="col-lg-3">
+          <a class="btn btn-warning btn-sm mb-3" data-toggle="modal" data-target="#da"><i class="fa fa-times"> Disallow</i></a>
+      </div>
         <div class="row justify-content-end">
         @if (Auth::user()->level == 'admin')
         <div class="col-lg-3">
@@ -292,6 +295,32 @@
       <!-- /.modal -->
 
 
+
+      <div class="modal fade" id="da" wire:ignore.self>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Disallow Semua</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin mengUnpublish semua Ujian yang ada?
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" wire:click="disAcc()">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+
       
 
       <script>
@@ -312,6 +341,9 @@
         })
         window.addEventListener('closeModal', event => {
             $('#hs').modal('hide');
+        })
+        window.addEventListener('closeModal', event => {
+            $('#da').modal('hide');
         })
       </script>
 
